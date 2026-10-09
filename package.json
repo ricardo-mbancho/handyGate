@@ -1,0 +1,23 @@
+{
+  "name": "handyGate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev:web": "pnpm --filter @handyman/web dev",
+    "dev:mobile": "pnpm --filter @handyman/mobile start",
+    "dev:api": "pnpm --filter @handyman/backend dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "12.10.1",
+      "onFail": "download"
+    }
+  },
+  "packageManager": "pnpm@12.10.1",
+  "type": "module"
+}
