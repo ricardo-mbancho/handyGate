@@ -1,56 +1,114 @@
-# Welcome to your Expo app 👋
+# HandyGate Mobile
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+The mobile application for **HandyGate**, a handyman marketplace connecting customers with skilled professionals for home repairs, maintenance, and other services.
 
-## Get started
+Built with [React Native](https://reactnative.dev/), [Expo](https://expo.dev/), and TypeScript.
 
-1. Install dependencies
+## Getting Started
 
-   ```bash
-   npm install
-   ```
+### Prerequisites
 
-2. Start the app
+- Node.js
+- pnpm
+- Expo Go for testing on a physical device
+- Android Studio for Android emulator development
 
-   ```bash
-   npx expo start
-   ```
+### 1. Install Dependencies
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+From the root of the HandyGate monorepo, run:
 
 ```bash
-npm run reset-project
+pnpm install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### 2. Start the Mobile App
 
-### Other setup steps
+From the monorepo root:
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+```bash
+pnpm --filter @handyman/mobile start
+```
 
-## Learn more
+Alternatively, navigate to the mobile app directory:
 
-To learn more about developing your project with Expo, look at the following resources:
+```bash
+cd apps/mobile
+pnpm exec expo start
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### 3. Run the App
 
-## Join the community
+After starting Expo, you can run the app on:
 
-Join our community of developers creating universal apps.
+- **Expo Go:** Scan the QR code using Expo Go on your phone.
+- **Android Emulator:** Start an Android Virtual Device and press `a` in the Expo terminal.
+- **iOS Simulator:** Press `i` on macOS with Xcode installed.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+If your phone cannot connect over your local network, try tunnel mode:
+
+```bash
+pnpm --filter @handyman/mobile exec expo start --tunnel
+```
+
+## Development
+
+The mobile app uses Expo Router for file-based navigation.
+
+You can start building features by editing files inside the `app` directory.
+
+Typical marketplace features include:
+
+- Customer registration and authentication
+- Handyman profiles and service listings
+- Job creation and job discovery
+- Offers and bookings
+- Messaging and notifications
+- Reviews and ratings
+
+## Monorepo Structure
+
+```text
+handyGate/
+├── apps/
+│   ├── web/          # React web application
+│   ├── mobile/       # React Native mobile application
+│   └── backend/      # Express REST API
+├── packages/         # Shared code and utilities
+├── package.json
+└── pnpm-workspace.yaml
+```
+
+## Useful Commands
+
+Run these commands from the monorepo root.
+
+| Command                                                   | Description                    |
+| --------------------------------------------------------- | ------------------------------ |
+| `pnpm install`                                            | Install workspace dependencies |
+| `pnpm --filter @handyman/mobile start`                    | Start Expo                     |
+| `pnpm --filter @handyman/mobile exec expo start --tunnel` | Start Expo using a tunnel      |
+| `pnpm --filter @handyman/mobile android`                  | Open on Android                |
+| `pnpm --filter @handyman/mobile lint`                     | Run linting, if configured     |
+
+## Backend API
+
+The mobile app communicates with the HandyGate backend through REST API endpoints.
+
+During local development, configure the API base URL according to your environment:
+
+- Android emulator: `http://10.0.2.2:3001`
+- Physical device: `http://YOUR_COMPUTER_LAN_IP:3001`
+- Web development: `http://localhost:3001`
+
+The backend must be running and reachable from the device. Use HTTPS and appropriate environment configuration for production.
+
+## Learn More
+
+- [Expo documentation](https://docs.expo.dev/)
+- [Expo Router documentation](https://docs.expo.dev/router/introduction/)
+- [React Native documentation](https://reactnative.dev/docs/getting-started)
+- [TypeScript documentation](https://www.typescriptlang.org/docs/)
+
+## License
+
+Private project. All rights reserved.
